@@ -14,11 +14,36 @@ namespace ThreadedProgramming
     {
 
         UpdateThread updater = new UpdateThread();
+        //container for graphics object used to draw on panel
+        System.Drawing.Graphics g;
+        Point pointCar1;
+        Point pointCar2;
+
+        Bitmap ic1;
+        Bitmap ic2;
 
         public Form1()
         {
             InitializeComponent();
             
+            panelRace.Paint += new PaintEventHandler(paintRacePanel);
+            
+            g = panelRace.CreateGraphics();
+
+            Bitmap sprinteSheet =  Image.FromFile(@"..\..\carSprites.png") as Bitmap;
+           
+            ic1 = new Bitmap(sprinteSheet).Clone(new Rectangle(0, 10, 95, 48), sprinteSheet.PixelFormat);
+            ic2 = new Bitmap(sprinteSheet).Clone(new Rectangle(160, 136, 95, 48), sprinteSheet.PixelFormat);
+
+            pointCar1 = new Point(0, 10);
+            pointCar2 = new Point(0, 80);
+        }
+
+        // used to draw graphics on panel
+        private void paintRacePanel(object sender, PaintEventArgs e)
+        {
+            g.DrawImage(ic1, pointCar1);
+            g.DrawImage(ic2, pointCar2); 
         }
 
         private void buttonBlockUIThread_Click(object sender, EventArgs e)

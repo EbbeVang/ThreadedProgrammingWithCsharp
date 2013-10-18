@@ -31,15 +31,17 @@
             this.labelIncremental = new System.Windows.Forms.Label();
             this.buttonBlockUIThread = new System.Windows.Forms.Button();
             this.buttonNewThread = new System.Windows.Forms.Button();
+            this.panelRace = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // labelIncremental
             // 
             this.labelIncremental.AutoSize = true;
-            this.labelIncremental.Location = new System.Drawing.Point(46, 54);
+            this.labelIncremental.Location = new System.Drawing.Point(699, 327);
             this.labelIncremental.Name = "labelIncremental";
-            this.labelIncremental.Size = new System.Drawing.Size(0, 13);
+            this.labelIncremental.Size = new System.Drawing.Size(16, 13);
             this.labelIncremental.TabIndex = 0;
+            this.labelIncremental.Text = "-1";
             // 
             // buttonBlockUIThread
             // 
@@ -61,11 +63,20 @@
             this.buttonNewThread.UseVisualStyleBackColor = true;
             this.buttonNewThread.Click += new System.EventHandler(this.buttonNewThread_Click);
             // 
+            // panelRace
+            // 
+            this.panelRace.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panelRace.Location = new System.Drawing.Point(5, 5);
+            this.panelRace.Name = "panelRace";
+            this.panelRace.Size = new System.Drawing.Size(728, 289);
+            this.panelRace.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 363);
+            this.Controls.Add(this.panelRace);
             this.Controls.Add(this.buttonNewThread);
             this.Controls.Add(this.buttonBlockUIThread);
             this.Controls.Add(this.labelIncremental);
@@ -81,6 +92,7 @@
         private System.Windows.Forms.Label labelIncremental;
         private System.Windows.Forms.Button buttonBlockUIThread;
         private System.Windows.Forms.Button buttonNewThread;
+        private System.Windows.Forms.Panel panelRace;
     }
 }
 
