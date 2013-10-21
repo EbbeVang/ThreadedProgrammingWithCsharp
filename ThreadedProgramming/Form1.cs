@@ -25,11 +25,16 @@ namespace ThreadedProgramming
         public Form1()
         {
             InitializeComponent();
-            
+
+            //enable double buffering to avoid flickering
+            this.SetStyle(ControlStyles.DoubleBuffer |
+            ControlStyles.UserPaint |
+            ControlStyles.AllPaintingInWmPaint,
+            true);
+            this.UpdateStyles();
+
             panelRace.Paint += new PaintEventHandler(paintRacePanel);
             
-            g = panelRace.CreateGraphics();
-
             Bitmap sprinteSheet =  Image.FromFile(@"..\..\carSprites.png") as Bitmap;
            
             ic1 = new Bitmap(sprinteSheet).Clone(new Rectangle(0, 10, 95, 48), sprinteSheet.PixelFormat);
@@ -37,13 +42,14 @@ namespace ThreadedProgramming
 
             pointCar1 = new Point(0, 10);
             pointCar2 = new Point(0, 80);
+
         }
 
         // used to draw graphics on panel
         private void paintRacePanel(object sender, PaintEventArgs e)
         {
-            g.DrawImage(ic1, pointCar1);
-            g.DrawImage(ic2, pointCar2); 
+            e.Graphics.DrawImage(ic1, pointCar1);
+            e.Graphics.DrawImage(ic2, pointCar2); 
         }
 
         private void buttonBlockUIThread_Click(object sender, EventArgs e)
@@ -62,8 +68,11 @@ namespace ThreadedProgramming
             for (int i = 0; i < 100; i++)
             {
                 Thread.Sleep(200);
-                labelIncremental.Text = i.ToString();
-                labelIncremental.Update();
+                
+                pointCar1.X += 1;
+                //labelIncremental.Text = pointCar1.X.ToString();
+                //labelIncremental.Update();
+                panelRace.Invalidate();
             }
         }
        

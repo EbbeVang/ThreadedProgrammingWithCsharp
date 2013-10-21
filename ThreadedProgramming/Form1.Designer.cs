@@ -31,7 +31,7 @@
             this.labelIncremental = new System.Windows.Forms.Label();
             this.buttonBlockUIThread = new System.Windows.Forms.Button();
             this.buttonNewThread = new System.Windows.Forms.Button();
-            this.panelRace = new System.Windows.Forms.Panel();
+            this.panelRace = new RacePanel();
             this.SuspendLayout();
             // 
             // labelIncremental
